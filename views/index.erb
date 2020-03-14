@@ -1,0 +1,37 @@
+
+<a href="/about">about</a>
+<p>
+<!--   <ul>
+    <li>Strawberry Jam</li>
+    <li>Blueberry Jam</li>
+    <li>Yellowberry Jam</li>
+  </ul> -->
+  <!-- <a href="http://www.bbc.com">bbc</a> -->
+
+<!--   <form action="/login" method="get">
+    username: <input type="text" name="username">
+    password: <input type="password" name="password">
+    <input type="submit">
+  </form>
+ -->
+
+  <ul>
+  <% @recipes.each_with_index do |recipe, index| %>
+    <li>
+      <%= recipe.name %>
+    </li>
+    <form action="/delete/<%= index %>" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Recipe">
+    </form>
+  <% end %>
+  </ul>
+</p>
+<a href="/new">new recipe</a>
+
+<!-- <a href="/remove">remove recipe</a> -->
+
+<!--
+user => user goes to "/index" ==> user sees all recipes ==> user click delete recipes ==> user sent DELETE request to "/delete/:id of the recipe"
+==> the request is received by sinatra ==> based on the url e.g. /delete/1 ==> take number 1 ===> find recipes that has id == 1
+==> delete the recipe ==> redirect back to "/index" -->
